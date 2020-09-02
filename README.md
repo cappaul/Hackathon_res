@@ -1,2 +1,5 @@
 # Hackathon_res
-Created with CodeSandbox
+
+Her kan vi beskrive oppgaven osv.
+
+Her er det mulig å dele og clone kode
