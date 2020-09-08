@@ -21,7 +21,7 @@ const HomePage = (props) => {
         onChange={(e) => setMyHookContent(e.target.value)}
       />
       {myPokemonContent.map((e, i) => (
-        <div className="pokemon-placard">
+        <div key={i} className="pokemon-placard">
           {e.name}
           <img src={myPokemonSprites[i]} alt={myPokemonSprites[9]}></img>
         </div>
