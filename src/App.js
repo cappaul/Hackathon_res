@@ -6,13 +6,26 @@ import EinoPage from "./pages/EinoPage";
 
 const App = () => {
   return (
-    <SimpleTabs>
-      <HomePage Label={"the Eino page"} />
-      <EinoPage Label={"other page"} />
-      <HomePage Label={"the TEAM page"} />
-      <HomePage Label={"the n'th page"} />
-      <HomePage Label={"the infinite page"} />
-    </SimpleTabs>
+    <div>
+      {/* sfljksajdf */}
+      <div>LOGO $$$Pokemons4cash$$$</div>
+      <SimpleTabs>
+        <div Label={"Readme Jenny"}>
+          intro Her skal vi lage:
+          <br />
+          noe
+          <br />
+          Buy a bulbasaur get a free caterpie
+        </div>
+
+        <HomePage Label={"Paul page"} />
+        <HomePage Label={"Pål page"} />
+        <EinoPage Label={"Eino page"} />
+        <HomePage Label={"Lisa page"} />
+
+        <HomePage Label={"the TEAM page"} />
+      </SimpleTabs>
+    </div>
   );
 };
 
