@@ -83,7 +83,7 @@ const PokemonType = styled.div`
   background-color: ${(props) => props.background};
 `;
 
-function Header({ handleChange, pokemon }) {
+function Header() {
   return (
     <SearchContainer>
       <Input type="text" placeholder="Search for pokemon" />
@@ -141,34 +141,6 @@ const PokemonCard = (props) => {
   );
 };
 
-// class PokemonCard extends React.Component {
-//   render() {
-//     const pokemonInfo = this.props;
-//     return (
-//       <PokeWrapper>
-//         <PokeImage src={pokemonInfo.sprites.front_default} />
-//         <PokemonName>{pokemonInfo.name}</PokemonName>
-//         <InfoContaier>
-//           {pokemonInfo.types.map((type, i) => (
-//             <PokemonType key={i}>{type.type.name}</PokemonType>
-//           ))}
-//           {/* <AbilityWrapper>
-//             {pokemonInfo.abilities.map((ability, i) => (
-//               <PokemonAbility key={i}>{ability.ability.name}</PokemonAbility>
-//             ))}
-//           </AbilityWrapper> */}
-//           {/* {pokemonInfo.stats.map((stat, i) => (
-//             <div>
-//               <div>{stat.base_stat}</div>
-//               <div>{stat.stat.name}</div>
-//             </div>
-//           ))} */}
-//         </InfoContaier>
-//       </PokeWrapper>
-//     );
-//   }
-// }
-
 function PokeList() {
   const [pokeInfo, setPokeInfo] = useState([]);
   const initialURL = `https://pokeapi.co/api/v2/pokemon/`;
@@ -217,7 +189,7 @@ function PokeList() {
   return (
     <Wrapper>
       <WrapperCards>
-        {/* {console.log(pokeInfo)} */}
+        {console.log(pokeInfo)}
         {pokeInfo.map((pokemon, i) => {
           return <PokemonCard key={i} {...pokemon} />;
         })}
@@ -227,15 +199,15 @@ function PokeList() {
 }
 
 const EinoPage = () => {
-  function handleChange(e) {
-    setPokeName(e.target.value);
-    console.log(e.target.value, "value from handlechange");
-  }
+  //   function handleChange(e) {
+  //     setPokeName(e.target.value);
+  //     console.log(e.target.value, "value from handlechange");
+  //   }
 
   return (
     <div>
       <Container fixed>
-        <Header handleChange={handleChange} />
+        <Header />
         <PokeList />
       </Container>
     </div>
