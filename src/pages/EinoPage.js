@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import pokeHeader from "../resources/pokemon.png";
 import Container from "@material-ui/core/Container";
-import styled from "styled-components";
 import "../einopage.css";
 
 const typeColor = {
