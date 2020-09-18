@@ -2,146 +2,157 @@ import React, { useState, useEffect } from "react";
 import pokeHeader from "../resources/pokemon.png";
 import Container from "@material-ui/core/Container";
 import styled from "styled-components";
+import "../einopage.css";
 
-const WrapperCards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+// const WrapperCards = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+// `;
 
-const Wrapper = styled.div`
-  width: 100%;
-  background-color: #f2f2f2;
-`;
+// const Wrapper = styled.div`
+//   width: 100%;
+//   background-color: #f2f2f2;
+// `;
 
-const PokeWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-  margin: 20px;
-  height: 300px;
-  width: 220px;
-  border-radius: 5px;
-  border: 1px solid #d9d9d9;
-  /* box-shadow: 0px 0px 5px 0px #797c7f; */
-`;
+// const PokeWrapper = styled.div`
+//   display: flex;
+//   flex-flow: column;
+//   margin: 20px;
+//   height: 300px;
+//   width: 220px;
+//   border-radius: 5px;
+//   border: 1px solid #d9d9d9;
+// `;
 
-const PokeImage = styled.img`
-  width: 82%;
-  display: block;
-  margin: 15px auto;
-`;
+// const PokeImage = styled.img`
+//   width: 82%;
+//   display: block;
+//   margin: 15px auto;
+// `;
 
-const PokemonName = styled.h2`
-  margin: 0;
-  font-weight: bold;
-  text-transform: capitalize;
-  display: block;
-  margin: 0 auto;
-`;
+// const PokemonName = styled.h2`
+//   margin: 0;
+//   font-weight: bold;
+//   text-transform: capitalize;
+//   display: block;
+//   margin: 0 auto;
+// `;
 
-const AbilityWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-`;
+// const AbilityWrapper = styled.div`
+//   display: flex;
+//   flex-flow: column;
+// `;
 
-const PokemonAbility = styled.div`
-  display: flex;
-  margin: 6px;
-  flex-flow: column;
-  border-bottom: 2px solid black;
-`;
+// const PokemonAbility = styled.div`
+//   display: flex;
+//   margin: 6px;
+//   flex-flow: column;
+//   border-bottom: 2px solid black;
+// `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  width: 100%;
-  background-size: cover;
-  background-image: url(${pokeHeader});
-`;
+// const SearchContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 400px;
+//   width: 100%;
+//   background-size: cover;
+//   background-image: url(${pokeHeader});
+// `;
 
-const Input = styled.input`
-  font-size: 1em;
-  height: 40px;
-  width: 400px;
-  border-radius: 5px;
-  border: none;
-  &:focus {
-    outline-color: #ade7f5;
-  }
-`;
+// const Input = styled.input`
+//   font-size: 1em;
+//   height: 40px;
+//   width: 400px;
+//   border-radius: 5px;
+//   border: none;
+//   &:focus {
+//     outline-color: #ade7f5;
+//   }
+// `;
 
-const InfoContaier = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-flow: row;
-  width: 100%;
-`;
+// const InfoContaier = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-flow: row;
+//   width: 100%;
+// `;
 
-const PokemonType = styled.div`
-  margin: 3px;
-  background-color: ${(props) => props.background};
-`;
+// const PokemonType = styled.div`
+//   margin: 3px;
+//   padding: 3px;
+//   border-radius: 3px;
+//   text-transform: capitalize;
+// `;
 
-function Header() {
+const typeColor = {
+  grass: "#78C850",
+  water: "#6890F0",
+  fire: "#F08030",
+  bug: "#C6D16E",
+  dragon: "#7038F8",
+  electric: "#FAE078",
+  fairy: "#F4BDC9",
+  fighting: "#D67873",
+  flying: "#A890F0",
+  ghost: "493963",
+  normal: "#C6C6A7",
+  ice: "#BCE6E6",
+  poison: "#C183C1",
+  psychic: "#FA92B2",
+  rock: "#D1C17D",
+  steel: "#D1D1E0",
+};
+
+function Header({ handleChange }) {
   return (
-    <SearchContainer>
-      <Input type="text" placeholder="Search for pokemon" />
-    </SearchContainer>
+    <div className="searchContainer">
+      <input
+        className="input-styled"
+        type="text"
+        placeholder="Search for pokemon"
+        onChange={handleChange}
+      />
+    </div>
   );
 }
 
 const PokemonCard = (props) => {
   const pokemonInfo = props;
-
-  function handleColor() {
-    pokemonInfo.types.forEach((type) => {
-      let pokeType = type.type.name;
-      switch (pokeType) {
-        case "grass":
-          return "green";
-        case "fire":
-          return console.log("fire");
-        case "water":
-          return console.log("water");
-        case "bug":
-          return console.log("bug");
-        case "flying":
-          return console.log("flying");
-        default:
-          return console.log("normal");
-      }
-    });
-  }
-  //   handleColor();
-
   return (
-    <PokeWrapper>
-      <PokeImage src={pokemonInfo.sprites.front_default} />
-      <PokemonName>{pokemonInfo.name}</PokemonName>
-      <InfoContaier>
+    <div className="pokeWrapper">
+      <img className="pokeImg" src={pokemonInfo.sprites.front_default} />
+      <div className="pokemonName">{pokemonInfo.name}</div>
+      <div className="infoContainer">
         {pokemonInfo.types.map((type, i) => (
-          <PokemonType key={i} background={handleColor()}>
+          <div
+            className="pokemonType"
+            key={i}
+            style={{ backgroundColor: typeColor[type.type.name] }}
+          >
             {type.type.name}
-          </PokemonType>
+          </div>
         ))}
-        {/* <AbilityWrapper>
-            {pokemonInfo.abilities.map((ability, i) => (
-              <PokemonAbility key={i}>{ability.ability.name}</PokemonAbility>
-            ))}
-          </AbilityWrapper> */}
-        {/* {pokemonInfo.stats.map((stat, i) => (
-            <div>
-              <div>{stat.base_stat}</div>
-              <div>{stat.stat.name}</div>
-            </div>
-          ))} */}
-      </InfoContaier>
-    </PokeWrapper>
+      </div>
+    </div>
   );
 };
 
-function PokeList() {
+function PokeList({ pokemon }) {
+  return (
+    <div className="wrapper">
+      <div className="wrapperCards">
+        {pokemon.map((pokemon, i) => {
+          return <PokemonCard key={i} {...pokemon} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+const EinoPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
   const [pokeInfo, setPokeInfo] = useState([]);
   const initialURL = `https://pokeapi.co/api/v2/pokemon/`;
 
@@ -166,49 +177,40 @@ function PokeList() {
   }
 
   const loadPokemon = async (data) => {
-    // if (data.length > 0) {
     let _pokemonData = await Promise.all(
       data.map(async (pokemon) => {
         let pokemonRecord = await getPokemon(pokemon);
         return pokemonRecord;
       })
     );
-    setPokeInfo(_pokemonData);
-    // }
+
+    const results = pokeInfo.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm)
+    );
+    if (searchTerm.length) {
+      setPokeInfo(results);
+    } else {
+      setPokeInfo(_pokemonData);
+    }
   };
 
   useEffect(() => {
     async function fetchData() {
       let response = await getAllPokemon(initialURL);
-      //   console.log(response.results, "data from useeffect");
       await loadPokemon(response.results);
     }
     fetchData();
-  }, []);
+  }, [searchTerm]);
 
-  return (
-    <Wrapper>
-      <WrapperCards>
-        {console.log(pokeInfo)}
-        {pokeInfo.map((pokemon, i) => {
-          return <PokemonCard key={i} {...pokemon} />;
-        })}
-      </WrapperCards>
-    </Wrapper>
-  );
-}
-
-const EinoPage = () => {
-  //   function handleChange(e) {
-  //     setPokeName(e.target.value);
-  //     console.log(e.target.value, "value from handlechange");
-  //   }
+  function handleChange(e) {
+    setSearchTerm(e.target.value);
+  }
 
   return (
     <div>
       <Container fixed>
-        <Header />
-        <PokeList />
+        <Header handleChange={handleChange} />
+        <PokeList pokemon={pokeInfo} search={searchResults} />
       </Container>
     </div>
   );
